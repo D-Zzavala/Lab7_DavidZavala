@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab7_davidzavala;
 
-/**
- *
- * @author 50431
- */
-public class Persona {
-    
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Persona implements Serializable {
+
+    private static final long SerialVersionUID = 666L;
+
     private int Edad;
     private String Nombre, Apellido;
 
@@ -51,5 +48,5 @@ public class Persona {
     public String toString() {
         return "Nombre: " + Nombre + ", Apellido: " + Apellido + ", Edad: " + Edad;
     }
-    
+
 }

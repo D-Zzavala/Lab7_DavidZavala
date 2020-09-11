@@ -5,6 +5,10 @@
  */
 package lab7_davidzavala;
 
+import java.util.Locale;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 50431
@@ -33,9 +37,9 @@ public class Frame extends javax.swing.JFrame {
         JB_Exit0 = new javax.swing.JButton();
         JB_SaveCarro = new javax.swing.JButton();
         JT_Placa = new javax.swing.JTextField();
-        JSp_Size = new javax.swing.JSpinner();
-        JSp_Puertas = new javax.swing.JSpinner();
-        JSp_Suciedad = new javax.swing.JSpinner();
+        JCB_Puertas = new javax.swing.JComboBox<>();
+        JCB_Suciedad = new javax.swing.JComboBox<>();
+        JCB_Tam = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -44,7 +48,7 @@ public class Frame extends javax.swing.JFrame {
         Fondo3 = new javax.swing.JLabel();
         AddPerson = new javax.swing.JDialog();
         JT_Nombre = new javax.swing.JTextField();
-        JTF_Apellido = new javax.swing.JTextField();
+        JT_Apellido = new javax.swing.JTextField();
         JSp_Edad = new javax.swing.JSpinner();
         JCB_Carro = new javax.swing.JComboBox<>();
         JB_BackCliente = new javax.swing.JButton();
@@ -63,14 +67,14 @@ public class Frame extends javax.swing.JFrame {
         JB_BackCliente3 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        JCB_Employ1 = new javax.swing.JComboBox<>();
+        JCB_CarProcess1 = new javax.swing.JComboBox<>();
         jProgressBar3 = new javax.swing.JProgressBar();
         jScrollPane3 = new javax.swing.JScrollPane();
         JTa_Process1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        JCB_Employ2 = new javax.swing.JComboBox<>();
+        JCB_CarProcess2 = new javax.swing.JComboBox<>();
         jProgressBar2 = new javax.swing.JProgressBar();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTa_Process2 = new javax.swing.JTable();
@@ -78,8 +82,8 @@ public class Frame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTa_Process3 = new javax.swing.JTable();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        JCB_CarProcess3 = new javax.swing.JComboBox<>();
+        JCB_Employ3 = new javax.swing.JComboBox<>();
         Titulo4 = new javax.swing.JLabel();
         Fondo4 = new javax.swing.JLabel();
         JB_NewEmp = new javax.swing.JButton();
@@ -122,26 +126,28 @@ public class Frame extends javax.swing.JFrame {
         JB_SaveCarro.setBorder(null);
         JB_SaveCarro.setBorderPainted(false);
         JB_SaveCarro.setContentAreaFilled(false);
+        JB_SaveCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SaveCarroActionPerformed(evt);
+            }
+        });
         AddCarro.getContentPane().add(JB_SaveCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 50, 50));
 
-        JT_Placa.setFont(new java.awt.Font("Courier New", 0, 36)); // NOI18N
+        JT_Placa.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         JT_Placa.setBorder(null);
-        AddCarro.getContentPane().add(JT_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 150, 40));
+        AddCarro.getContentPane().add(JT_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 170, 40));
 
-        JSp_Size.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
-        JSp_Size.setModel(new javax.swing.SpinnerListModel(new String[] {"Pequeño", "Mediano", "Grande"}));
-        JSp_Size.setBorder(null);
-        AddCarro.getContentPane().add(JSp_Size, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 190, 40));
+        JCB_Puertas.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        JCB_Puertas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4" }));
+        AddCarro.getContentPane().add(JCB_Puertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 60, 40));
 
-        JSp_Puertas.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
-        JSp_Puertas.setModel(new javax.swing.SpinnerNumberModel(2, 2, 4, 1));
-        JSp_Puertas.setBorder(null);
-        AddCarro.getContentPane().add(JSp_Puertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 60, 40));
+        JCB_Suciedad.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        JCB_Suciedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "6", "7", "8", "9", "10" }));
+        AddCarro.getContentPane().add(JCB_Suciedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 80, 40));
 
-        JSp_Suciedad.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
-        JSp_Suciedad.setModel(new javax.swing.SpinnerNumberModel(5, 5, 10, 1));
-        JSp_Suciedad.setBorder(null);
-        AddCarro.getContentPane().add(JSp_Suciedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, -1, 40));
+        JCB_Tam.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        JCB_Tam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeño", "Mediano", "Grande" }));
+        AddCarro.getContentPane().add(JCB_Tam, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 190, 40));
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 0));
@@ -178,15 +184,16 @@ public class Frame extends javax.swing.JFrame {
         JT_Nombre.setBorder(null);
         AddPerson.getContentPane().add(JT_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 150, 40));
 
-        JTF_Apellido.setFont(new java.awt.Font("Courier New", 0, 36)); // NOI18N
-        JTF_Apellido.setBorder(null);
-        AddPerson.getContentPane().add(JTF_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 150, 40));
+        JT_Apellido.setFont(new java.awt.Font("Courier New", 0, 36)); // NOI18N
+        JT_Apellido.setBorder(null);
+        AddPerson.getContentPane().add(JT_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 150, 40));
 
         JSp_Edad.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         JSp_Edad.setBorder(null);
         AddPerson.getContentPane().add(JSp_Edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 70, 40));
 
         JCB_Carro.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        JCB_Carro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         JCB_Carro.setBorder(null);
         AddPerson.getContentPane().add(JCB_Carro, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 200, 40));
 
@@ -216,12 +223,22 @@ public class Frame extends javax.swing.JFrame {
         JB_SaveCliente.setBorder(null);
         JB_SaveCliente.setBorderPainted(false);
         JB_SaveCliente.setContentAreaFilled(false);
+        JB_SaveCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SaveClienteActionPerformed(evt);
+            }
+        });
         AddPerson.getContentPane().add(JB_SaveCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 50, 50));
 
         JB_SaveEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Save.png"))); // NOI18N
         JB_SaveEmpleado.setBorder(null);
         JB_SaveEmpleado.setBorderPainted(false);
         JB_SaveEmpleado.setContentAreaFilled(false);
+        JB_SaveEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SaveEmpleadoActionPerformed(evt);
+            }
+        });
         AddPerson.getContentPane().add(JB_SaveEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 50, 50));
 
         jLabel10.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
@@ -270,6 +287,11 @@ public class Frame extends javax.swing.JFrame {
         JB_SaveCliente3.setBorder(null);
         JB_SaveCliente3.setBorderPainted(false);
         JB_SaveCliente3.setContentAreaFilled(false);
+        JB_SaveCliente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SaveCliente3ActionPerformed(evt);
+            }
+        });
         Process.getContentPane().add(JB_SaveCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 50, 50));
 
         JB_BackCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Back.png"))); // NOI18N
@@ -283,9 +305,11 @@ public class Frame extends javax.swing.JFrame {
         });
         Process.getContentPane().add(JB_BackCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
-        jComboBox7.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_Employ1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_Employ1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
-        jComboBox8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_CarProcess1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_CarProcess1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jProgressBar3.setBorder(null);
         jProgressBar3.setBorderPainted(false);
@@ -305,38 +329,42 @@ public class Frame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 16, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
+                        .addComponent(JCB_Employ1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(JCB_CarProcess1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 34, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCB_CarProcess1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCB_Employ1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lavado 1", jPanel1);
 
-        jComboBox5.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_Employ2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_Employ2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
-        jComboBox6.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_CarProcess2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        JCB_CarProcess2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jProgressBar2.setBorder(null);
         jProgressBar2.setBorderPainted(false);
@@ -362,31 +390,28 @@ public class Frame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 4, Short.MAX_VALUE)))
+                                .addComponent(JCB_Employ2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(JCB_CarProcess2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCB_Employ2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCB_CarProcess2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lavado 2", jPanel2);
-
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JTa_Process3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -398,21 +423,50 @@ public class Frame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(JTa_Process3);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, 740, 370));
-
         jProgressBar1.setBorder(null);
         jProgressBar1.setBorderPainted(false);
-        jPanel3.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 730, 50));
 
-        jComboBox3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 350, 40));
+        JCB_CarProcess3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
 
-        jComboBox4.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 40));
+        JCB_Employ3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(JCB_Employ3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(JCB_CarProcess3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCB_Employ3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCB_CarProcess3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         jTabbedPane1.addTab("Lavado 3", jPanel3);
 
-        Process.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 760, 510));
+        Process.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 760, 510));
 
         Titulo4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 56)); // NOI18N
         Titulo4.setForeground(new java.awt.Color(255, 255, 0));
@@ -557,6 +611,54 @@ public class Frame extends javax.swing.JFrame {
     private void JB_BackClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BackClienteActionPerformed
         System.exit(0);
     }//GEN-LAST:event_JB_BackClienteActionPerformed
+    private int puertas() {
+        int ret = 0;
+        if (JCB_Puertas.getSelectedIndex() == 0) {
+            ret = 2;
+        } else if (JCB_Puertas.getSelectedIndex() == 1) {
+            ret = 4;
+        }
+        return ret;
+    }
+
+    private void JB_SaveCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveCarroActionPerformed
+        if (JT_Placa.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese una placa para el carro.");
+        } else {
+            try {
+                Carro car = new Carro(puertas(), JCB_Suciedad.getSelectedIndex() + 5, JT_Placa.getText(), JCB_Tam.getSelectedItem().toString());
+                DefaultComboBoxModel model = (DefaultComboBoxModel) JCB_Carro.getModel();
+                model.addElement((String) car.toString());
+                JCB_Carro.setModel(model);
+                DefaultComboBoxModel model2 = (DefaultComboBoxModel) JCB_CarProcess1.getModel();
+                model2.addElement((String) car.toString());
+                JCB_Carro.setModel(model);
+                DefaultComboBoxModel model3 = (DefaultComboBoxModel) JCB_CarProcess2.getModel();
+                model3.addElement((String) car.toString());
+                JCB_Carro.setModel(model);
+                DefaultComboBoxModel model4 = (DefaultComboBoxModel) JCB_CarProcess3.getModel();
+                model4.addElement((String) car.toString());
+                JCB_Carro.setModel(model);
+                Carro cr = new Carro("./Files/CarsFiles.djz");
+                cr.cargarArchivo();
+                cr.setCArro(car);
+                cr.escribirArchivo();
+                JOptionPane.showMessageDialog(null, "Carro Guardado exitosamente.");
+                JT_Placa.setText("");
+            } catch (Exception e) {
+                /*this.setVisible(true);
+                this.pack();
+                this.setLocationRelativeTo(null);
+                AddCarro.setVisible(false);*/
+                JOptionPane.showMessageDialog(null, "Hubo un Error");
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_JB_SaveCarroActionPerformed
+
+    private void JB_Exit0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_Exit0ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JB_Exit0ActionPerformed
 
     private void JB_Back0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_Back0ActionPerformed
         this.setVisible(true);
@@ -564,9 +666,94 @@ public class Frame extends javax.swing.JFrame {
         AddPerson.setVisible(false);
     }//GEN-LAST:event_JB_Back0ActionPerformed
 
-    private void JB_Exit0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_Exit0ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_JB_Exit0ActionPerformed
+    private void JB_SaveClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveClienteActionPerformed
+        if (JT_Nombre.getText().equals("") || JT_Apellido.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos necesarios.");
+        } else if (JCB_Carro.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "El cliente necesita tener un carro.");
+        } else if (Integer.parseInt(JSp_Edad.getValue().toString()) < 0) {
+            JOptionPane.showMessageDialog(null, "Edad no valida.");
+        } else {
+            try {
+                Cliente car = new Cliente(JT_Nombre.getText(), JT_Apellido.getText(), Integer.parseInt(JSp_Edad.getValue().toString()), 1);
+                Cliente cr = new Cliente("./Files/ClientsFiles.djz");
+                cr.cargarArchivo();
+                cr.setClientes(cr);
+                cr.escribirArchivo();
+                JOptionPane.showMessageDialog(null, "Cliente Guardado Exitosamente.");
+                JT_Nombre.setText("");
+                JT_Apellido.setText("");
+                JCB_Carro.setSelectedIndex(0);
+                JSp_Edad.setValue(0);
+            } catch (Exception e) {
+                this.setVisible(true);
+                this.pack();
+                this.setLocationRelativeTo(null);
+                AddCarro.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Hubo un Error");
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_JB_SaveClienteActionPerformed
+
+    private void JB_SaveEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveEmpleadoActionPerformed
+        if (JT_Nombre.getText().equals("") || JT_Apellido.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos necesarios.");
+        } else if (Integer.parseInt(JSp_Edad.getValue().toString()) < 0) {
+            JOptionPane.showMessageDialog(null, "Edad no valida.");
+        } else {
+            try {
+                Cliente car = new Cliente(JT_Nombre.getText(), JT_Apellido.getText(), Integer.parseInt(JSp_Edad.getValue().toString()), 1);
+                Cliente cr = new Cliente("./Files/EmployFiles.djz");
+                cr.cargarArchivo();
+                cr.setClientes(cr);
+                cr.escribirArchivo();
+                DefaultComboBoxModel model2 = (DefaultComboBoxModel) JCB_Employ1.getModel();
+                model2.addElement((String) car.toString());
+                JCB_Employ1.setModel(model2);
+                DefaultComboBoxModel model3 = (DefaultComboBoxModel) JCB_Employ2.getModel();
+                model3.addElement((String) car.toString());
+                JCB_Employ2.setModel(model2);
+                DefaultComboBoxModel model4 = (DefaultComboBoxModel) JCB_Employ3.getModel();
+                model4.addElement((String) car.toString());
+                JCB_Employ3.setModel(model2);
+                JOptionPane.showMessageDialog(null, "Empleado Guardado Exitosamente.");
+                JT_Nombre.setText("");
+                JT_Apellido.setText("");
+                JSp_Edad.setValue(0);
+            } catch (Exception e) {
+                this.setVisible(true);
+                this.pack();
+                this.setLocationRelativeTo(null);
+                AddCarro.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Hubo un Error");
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_JB_SaveEmpleadoActionPerformed
+
+    private void JB_SaveCliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveCliente3ActionPerformed
+        if (JCB_CarProcess1.getSelectedItem().equals(JCB_CarProcess2.getSelectedItem()) || JCB_CarProcess1.getSelectedItem().equals(JCB_CarProcess3.getSelectedItem()) || JCB_CarProcess2.getSelectedItem().equals(JCB_CarProcess1.getSelectedItem()) || JCB_CarProcess2.getSelectedItem().equals(JCB_CarProcess3.getSelectedItem()) || JCB_CarProcess3.getSelectedItem().equals(JCB_CarProcess1.getSelectedItem()) || JCB_CarProcess3.getSelectedItem().equals(JCB_CarProcess2.getSelectedItem())) {
+            JOptionPane.showMessageDialog(null, "Los carros deben ser distintos para cada lavado");
+        } else if (JCB_CarProcess1.getSelectedIndex() == 0 || JCB_CarProcess2.getSelectedIndex() == 0 || JCB_CarProcess3.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Deben haber carros seleccionados para el Lavado.");
+        } else if (JCB_Employ1.getSelectedItem().equals(JCB_CarProcess2.getSelectedItem()) || JCB_Employ2.getSelectedItem().equals(JCB_CarProcess3.getSelectedItem()) || JCB_Employ3.getSelectedItem().equals(JCB_CarProcess1.getSelectedItem()) || JCB_CarProcess2.getSelectedItem().equals(JCB_CarProcess3.getSelectedItem()) || JCB_CarProcess3.getSelectedItem().equals(JCB_CarProcess1.getSelectedItem()) || JCB_CarProcess3.getSelectedItem().equals(JCB_CarProcess2.getSelectedItem())) {
+            JOptionPane.showMessageDialog(null, "Los Empleados deben ser distintos para cada lavado");
+        } else if (JCB_Employ1.getSelectedIndex() == 0 || JCB_Employ2.getSelectedIndex() == 0 || JCB_Employ3.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Deben haber Empleados seleccionados para el Lavado.");
+        }else{
+            try {
+                
+            } catch (Exception e) {
+                this.setVisible(true);
+                this.pack();
+                this.setLocationRelativeTo(null);
+                Process.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Hubo un Error");
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_JB_SaveCliente3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -624,12 +811,18 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton JB_SaveCliente;
     private javax.swing.JButton JB_SaveCliente3;
     private javax.swing.JButton JB_SaveEmpleado;
+    private javax.swing.JComboBox<String> JCB_CarProcess1;
+    private javax.swing.JComboBox<String> JCB_CarProcess2;
+    private javax.swing.JComboBox<String> JCB_CarProcess3;
     private javax.swing.JComboBox<String> JCB_Carro;
+    private javax.swing.JComboBox<String> JCB_Employ1;
+    private javax.swing.JComboBox<String> JCB_Employ2;
+    private javax.swing.JComboBox<String> JCB_Employ3;
+    private javax.swing.JComboBox<String> JCB_Puertas;
+    private javax.swing.JComboBox<String> JCB_Suciedad;
+    private javax.swing.JComboBox<String> JCB_Tam;
     private javax.swing.JSpinner JSp_Edad;
-    private javax.swing.JSpinner JSp_Puertas;
-    private javax.swing.JSpinner JSp_Size;
-    private javax.swing.JSpinner JSp_Suciedad;
-    private javax.swing.JTextField JTF_Apellido;
+    private javax.swing.JTextField JT_Apellido;
     private javax.swing.JTextField JT_Nombre;
     private javax.swing.JTextField JT_Placa;
     private javax.swing.JTable JTa_Process1;
@@ -644,12 +837,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo6;
     private javax.swing.JLabel Titulo7;
     private javax.swing.JLabel Titulo8;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
