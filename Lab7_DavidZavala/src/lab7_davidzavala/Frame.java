@@ -50,7 +50,13 @@ public class Frame extends javax.swing.JFrame {
         JT_Nombre = new javax.swing.JTextField();
         JT_Apellido = new javax.swing.JTextField();
         JSp_Edad = new javax.swing.JSpinner();
-        JCB_Carro = new javax.swing.JComboBox<>();
+        JCB_AllCarro = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        JList_CarrosCliente = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        JList_CarrosEmpleados = new javax.swing.JList<>();
+        JB_AddCarroEmpleado = new javax.swing.JButton();
+        JB_AddCarroCliente = new javax.swing.JButton();
         JB_BackCliente = new javax.swing.JButton();
         JB_ExitCliente = new javax.swing.JButton();
         JB_SaveCliente = new javax.swing.JButton();
@@ -192,10 +198,42 @@ public class Frame extends javax.swing.JFrame {
         JSp_Edad.setBorder(null);
         AddPerson.getContentPane().add(JSp_Edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 70, 40));
 
-        JCB_Carro.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
-        JCB_Carro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        JCB_Carro.setBorder(null);
-        AddPerson.getContentPane().add(JCB_Carro, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 200, 40));
+        JCB_AllCarro.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        JCB_AllCarro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        JCB_AllCarro.setBorder(null);
+        AddPerson.getContentPane().add(JCB_AllCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 200, 40));
+
+        JList_CarrosCliente.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jScrollPane4.setViewportView(JList_CarrosCliente);
+
+        AddPerson.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, 200, 240));
+
+        JList_CarrosEmpleados.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jScrollPane5.setViewportView(JList_CarrosEmpleados);
+
+        AddPerson.getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, 200, 240));
+
+        JB_AddCarroEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Car.png"))); // NOI18N
+        JB_AddCarroEmpleado.setBorder(null);
+        JB_AddCarroEmpleado.setBorderPainted(false);
+        JB_AddCarroEmpleado.setContentAreaFilled(false);
+        JB_AddCarroEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AddCarroEmpleadoActionPerformed(evt);
+            }
+        });
+        AddPerson.getContentPane().add(JB_AddCarroEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 300, 50, 50));
+
+        JB_AddCarroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Car.png"))); // NOI18N
+        JB_AddCarroCliente.setBorder(null);
+        JB_AddCarroCliente.setBorderPainted(false);
+        JB_AddCarroCliente.setContentAreaFilled(false);
+        JB_AddCarroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AddCarroClienteActionPerformed(evt);
+            }
+        });
+        AddPerson.getContentPane().add(JB_AddCarroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 300, 50, 50));
 
         JB_BackCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Exit.png"))); // NOI18N
         JB_BackCliente.setBorder(null);
@@ -559,8 +597,10 @@ public class Frame extends javax.swing.JFrame {
         AddPerson.pack();
         AddPerson.setLocationRelativeTo(null);
         Titulo2.setText("Agregar Empleado");
-        jLabel10.setVisible(false);
-        JCB_Carro.setVisible(false);
+        JList_CarrosCliente.setVisible(false);
+        JList_CarrosEmpleados.setVisible(true);
+        JB_AddCarroCliente.setVisible(false);
+        JB_AddCarroEmpleado.setVisible(true);
         JB_SaveCliente.setVisible(false);
         JB_SaveEmpleado.setVisible(true);
         this.setVisible(false);
@@ -571,8 +611,10 @@ public class Frame extends javax.swing.JFrame {
         AddPerson.pack();
         AddPerson.setLocationRelativeTo(null);
         Titulo2.setText("Agregar Cliente");
-        jLabel10.setVisible(true);
-        JCB_Carro.setVisible(true);
+        JList_CarrosCliente.setVisible(false);
+        JList_CarrosEmpleados.setVisible(true);
+        JB_AddCarroCliente.setVisible(false);
+        JB_AddCarroEmpleado.setVisible(true);
         JB_SaveCliente.setVisible(true);
         JB_SaveEmpleado.setVisible(false);
         this.setVisible(false);
@@ -627,18 +669,18 @@ public class Frame extends javax.swing.JFrame {
         } else {
             try {
                 Carro car = new Carro(puertas(), JCB_Suciedad.getSelectedIndex() + 5, JT_Placa.getText(), JCB_Tam.getSelectedItem().toString());
-                DefaultComboBoxModel model = (DefaultComboBoxModel) JCB_Carro.getModel();
+                DefaultComboBoxModel model = (DefaultComboBoxModel) JCB_AllCarro.getModel();
                 model.addElement((String) car.toString());
-                JCB_Carro.setModel(model);
+                JCB_AllCarro.setModel(model);
                 DefaultComboBoxModel model2 = (DefaultComboBoxModel) JCB_CarProcess1.getModel();
                 model2.addElement((String) car.toString());
-                JCB_Carro.setModel(model);
+                JCB_AllCarro.setModel(model);
                 DefaultComboBoxModel model3 = (DefaultComboBoxModel) JCB_CarProcess2.getModel();
                 model3.addElement((String) car.toString());
-                JCB_Carro.setModel(model);
+                JCB_AllCarro.setModel(model);
                 DefaultComboBoxModel model4 = (DefaultComboBoxModel) JCB_CarProcess3.getModel();
                 model4.addElement((String) car.toString());
-                JCB_Carro.setModel(model);
+                JCB_AllCarro.setModel(model);
                 Carro cr = new Carro("./Files/CarsFiles.djz");
                 cr.cargarArchivo();
                 cr.setCArro(car);
@@ -669,7 +711,7 @@ public class Frame extends javax.swing.JFrame {
     private void JB_SaveClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveClienteActionPerformed
         if (JT_Nombre.getText().equals("") || JT_Apellido.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos necesarios.");
-        } else if (JCB_Carro.getSelectedIndex() == 0) {
+        } else if (JCB_AllCarro.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "El cliente necesita tener un carro.");
         } else if (Integer.parseInt(JSp_Edad.getValue().toString()) < 0) {
             JOptionPane.showMessageDialog(null, "Edad no valida.");
@@ -683,7 +725,7 @@ public class Frame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Cliente Guardado Exitosamente.");
                 JT_Nombre.setText("");
                 JT_Apellido.setText("");
-                JCB_Carro.setSelectedIndex(0);
+                JCB_AllCarro.setSelectedIndex(0);
                 JSp_Edad.setValue(0);
             } catch (Exception e) {
                 this.setVisible(true);
@@ -755,6 +797,14 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JB_SaveCliente3ActionPerformed
 
+    private void JB_AddCarroEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AddCarroEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_AddCarroEmpleadoActionPerformed
+
+    private void JB_AddCarroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AddCarroClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_AddCarroClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -797,6 +847,8 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel Fondo3;
     private javax.swing.JLabel Fondo4;
+    private javax.swing.JButton JB_AddCarroCliente;
+    private javax.swing.JButton JB_AddCarroEmpleado;
     private javax.swing.JButton JB_Back0;
     private javax.swing.JButton JB_BackCliente;
     private javax.swing.JButton JB_BackCliente3;
@@ -811,16 +863,18 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton JB_SaveCliente;
     private javax.swing.JButton JB_SaveCliente3;
     private javax.swing.JButton JB_SaveEmpleado;
+    private javax.swing.JComboBox<String> JCB_AllCarro;
     private javax.swing.JComboBox<String> JCB_CarProcess1;
     private javax.swing.JComboBox<String> JCB_CarProcess2;
     private javax.swing.JComboBox<String> JCB_CarProcess3;
-    private javax.swing.JComboBox<String> JCB_Carro;
     private javax.swing.JComboBox<String> JCB_Employ1;
     private javax.swing.JComboBox<String> JCB_Employ2;
     private javax.swing.JComboBox<String> JCB_Employ3;
     private javax.swing.JComboBox<String> JCB_Puertas;
     private javax.swing.JComboBox<String> JCB_Suciedad;
     private javax.swing.JComboBox<String> JCB_Tam;
+    private javax.swing.JList<String> JList_CarrosCliente;
+    private javax.swing.JList<String> JList_CarrosEmpleados;
     private javax.swing.JSpinner JSp_Edad;
     private javax.swing.JTextField JT_Apellido;
     private javax.swing.JTextField JT_Nombre;
@@ -854,6 +908,8 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
