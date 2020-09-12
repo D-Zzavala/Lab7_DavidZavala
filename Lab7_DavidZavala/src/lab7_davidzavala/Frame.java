@@ -231,7 +231,7 @@ public class Frame extends javax.swing.JFrame {
                 JB_AddCarroClienteActionPerformed(evt);
             }
         });
-        AddPerson.getContentPane().add(JB_AddCarroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 530, 50, 50));
+        AddPerson.getContentPane().add(JB_AddCarroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 50, 50));
 
         JB_AddCarroEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Car.png"))); // NOI18N
         JB_AddCarroEmpleado.setBorder(null);
@@ -781,27 +781,17 @@ public class Frame extends javax.swing.JFrame {
         } else {
             try {
                 //PB1
+                System.out.println("entro");
                 Empleado temp = (Empleado) JCB_Employ1.getSelectedItem();
                 int max = 0;
                 for (int i = 0; i < temp.getCarros().size(); i++) {
                     int op = 0;
-                    if (temp.getCarros().get(i).getTamano().equals("Pequeño")) {
-                        op = 1;
-                    } else if (temp.getCarros().get(i).getTamano().equals("Mediano")) {
-                        op = 2;
-                    } else if (temp.getCarros().get(i).getTamano().equals("Grande")) {
-                        op = 3;
-                    }
-                    switch (op) {
-                        case 1:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 1.5);
-                            break;
-                        case 2:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 1.8);
-                            break;
-                        case 3:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 2.2);
-                            break;
+                    if (temp.getCarros().get(i).getTamano().toLowerCase().equals("pequeño")) {
+                        max = (int) (temp.getCarros().get(i).getSucio() * 1.5);
+                    } else if (temp.getCarros().get(i).getTamano().toLowerCase().equals("mediano")) {
+                        max = (int) (temp.getCarros().get(i).getSucio() * 1.8);
+                    } else if (temp.getCarros().get(i).getTamano().toLowerCase().equals("grande")){
+                        max = (int) (temp.getCarros().get(i).getSucio() * 2.2);
                     }
                     jProgressBar1.setMaximum(max);
                     Process Prog = new Process(jProgressBar1);
@@ -823,32 +813,21 @@ public class Frame extends javax.swing.JFrame {
                 //PB2
                 Empleado temp2 = (Empleado) JCB_Employ2.getSelectedItem();
                 int max2 = 0;
-                for (int i = 0; i < temp.getCarros().size(); i++) {
+                for (int i = 0; i < temp2.getCarros().size(); i++) {
                     int op = 0;
-                    if (temp.getCarros().get(i).getTamano().equals("Pequeño")) {
-                        op = 1;
-                    } else if (temp.getCarros().get(i).getTamano().equals("Mediano")) {
-                        op = 2;
-                    } else if (temp.getCarros().get(i).getTamano().equals("Grande")) {
-                        op = 3;
-                    }
-                    switch (op) {
-                        case 1:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 1.5);
-                            break;
-                        case 2:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 1.8);
-                            break;
-                        case 3:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 2.2);
-                            break;
+                    if (temp2.getCarros().get(i).getTamano().toLowerCase().equals("pequeño")) {
+                        max = (int) (temp2.getCarros().get(i).getSucio() * 1.5);
+                    } else if (temp2.getCarros().get(i).getTamano().toLowerCase().equals("mediano")) {
+                        max = (int) (temp2.getCarros().get(i).getSucio() * 1.8);
+                    } else if (temp2.getCarros().get(i).getTamano().toLowerCase().equals("grande")){
+                        max = (int) (temp2.getCarros().get(i).getSucio() * 2.2);
                     }
                     jProgressBar2.setMaximum(max);
                     Process Prog = new Process(jProgressBar2);
                     Thread proceso1 = new Thread(Prog);
                     proceso1.start();
                     if (jProgressBar2.getValue() == Prog.getLim()) {
-                        Carro car = temp.getCarros().get(i);
+                        Carro car = temp2.getCarros().get(i);
                         DefaultTableModel m = (DefaultTableModel) JTa_Process2.getModel();
                         Object[] newrow = {car.getPlaca(), car.getTamano(), car.getPuertas(), car.getSucio()};
                         m.addRow(newrow);
@@ -863,32 +842,21 @@ public class Frame extends javax.swing.JFrame {
                 //PB3
                 Empleado temp3 = (Empleado) JCB_Employ3.getSelectedItem();
                 int max3 = 0;
-                for (int i = 0; i < temp.getCarros().size(); i++) {
+                for (int i = 0; i < temp3.getCarros().size(); i++) {
                     int op = 0;
-                    if (temp.getCarros().get(i).getTamano().equals("Pequeño")) {
-                        op = 1;
-                    } else if (temp.getCarros().get(i).getTamano().equals("Mediano")) {
-                        op = 2;
-                    } else if (temp.getCarros().get(i).getTamano().equals("Grande")) {
-                        op = 3;
-                    }
-                    switch (op) {
-                        case 1:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 1.5);
-                            break;
-                        case 2:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 1.8);
-                            break;
-                        case 3:
-                            max = (int) (temp.getCarros().get(i).getSucio() * 2.2);
-                            break;
+                    if (temp3.getCarros().get(i).getTamano().toLowerCase().equals("pequeño")) {
+                        max = (int) (temp3.getCarros().get(i).getSucio() * 1.5);
+                    } else if (temp3.getCarros().get(i).getTamano().toLowerCase().equals("mediano")) {
+                        max = (int) (temp3.getCarros().get(i).getSucio() * 1.8);
+                    } else if (temp3.getCarros().get(i).getTamano().toLowerCase().equals("grande")){
+                        max = (int) (temp3.getCarros().get(i).getSucio() * 2.2);
                     }
                     jProgressBar3.setMaximum(max);
                     Process Prog = new Process(jProgressBar3);
                     Thread proceso3 = new Thread(Prog);
                     proceso3.start();
                     if (jProgressBar3.getValue() == Prog.getLim()) {
-                        Carro car = temp.getCarros().get(i);
+                        Carro car = temp3.getCarros().get(i);
                         DefaultTableModel m = (DefaultTableModel) JTa_Process3.getModel();
                         Object[] newrow = {car.getPlaca(), car.getTamano(), car.getPuertas(), car.getSucio()};
                         m.addRow(newrow);
@@ -900,7 +868,7 @@ public class Frame extends javax.swing.JFrame {
                     }
                     jProgressBar3.setValue(0);
                 }
-                
+
             } catch (Exception e) {
                 this.setVisible(true);
                 this.pack();
