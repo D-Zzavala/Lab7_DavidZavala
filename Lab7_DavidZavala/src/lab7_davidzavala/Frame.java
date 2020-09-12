@@ -231,7 +231,7 @@ public class Frame extends javax.swing.JFrame {
                 JB_AddCarroClienteActionPerformed(evt);
             }
         });
-        AddPerson.getContentPane().add(JB_AddCarroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 50, 50));
+        AddPerson.getContentPane().add(JB_AddCarroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 530, 50, 50));
 
         JB_AddCarroEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Car.png"))); // NOI18N
         JB_AddCarroEmpleado.setBorder(null);
@@ -661,9 +661,10 @@ public class Frame extends javax.swing.JFrame {
             try {
                 Carro car = new Carro(puertas(), JCB_Suciedad.getSelectedIndex() + 5, JT_Placa.getText(), JCB_Tam.getSelectedItem().toString());
                 DefaultComboBoxModel model = (DefaultComboBoxModel) JCB_AllCarroEmpleados.getModel();
+                DefaultComboBoxModel model2 = (DefaultComboBoxModel) JCB_AllCarroClientes.getModel();
                 model.addElement((Carro) car);
                 JCB_AllCarroEmpleados.setModel(model);
-                JCB_AllCarroClientes.setModel(model);
+                JCB_AllCarroClientes.setModel(model2);
                 Carro cr = new Carro("./Files/CarsFiles.djz");
                 cr.cargarArchivo();
                 cr.setCArro(car);
@@ -671,10 +672,10 @@ public class Frame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Carro Guardado exitosamente.");
                 JT_Placa.setText("");
             } catch (Exception e) {
-                /*this.setVisible(true);
+                this.setVisible(true);
                 this.pack();
                 this.setLocationRelativeTo(null);
-                AddCarro.setVisible(false);*/
+                AddCarro.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Hubo un Error");
                 JOptionPane.showMessageDialog(null, e);
             }
@@ -779,9 +780,10 @@ public class Frame extends javax.swing.JFrame {
         if (JCB_Employ1.getSelectedIndex() == 0 || JCB_Employ2.getSelectedIndex() == 0 || JCB_Employ3.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Deben haber Empleados seleccionados para el Lavado.");
         } else {
+                System.out.println("entroa");
             try {
                 //PB1
-                System.out.println("entro");
+                System.out.println("entroi");
                 Empleado temp = (Empleado) JCB_Employ1.getSelectedItem();
                 int max = 0;
                 for (int i = 0; i < temp.getCarros().size(); i++) {
@@ -790,11 +792,12 @@ public class Frame extends javax.swing.JFrame {
                         max = (int) (temp.getCarros().get(i).getSucio() * 1.5);
                     } else if (temp.getCarros().get(i).getTamano().toLowerCase().equals("mediano")) {
                         max = (int) (temp.getCarros().get(i).getSucio() * 1.8);
-                    } else if (temp.getCarros().get(i).getTamano().toLowerCase().equals("grande")){
+                    } else if (temp.getCarros().get(i).getTamano().toLowerCase().equals("grande")) {
                         max = (int) (temp.getCarros().get(i).getSucio() * 2.2);
                     }
                     jProgressBar1.setMaximum(max);
                     Process Prog = new Process(jProgressBar1);
+                    Prog.setLim(max);
                     Thread proceso1 = new Thread(Prog);
                     proceso1.start();
                     if (jProgressBar1.getValue() == Prog.getLim()) {
@@ -819,7 +822,7 @@ public class Frame extends javax.swing.JFrame {
                         max = (int) (temp2.getCarros().get(i).getSucio() * 1.5);
                     } else if (temp2.getCarros().get(i).getTamano().toLowerCase().equals("mediano")) {
                         max = (int) (temp2.getCarros().get(i).getSucio() * 1.8);
-                    } else if (temp2.getCarros().get(i).getTamano().toLowerCase().equals("grande")){
+                    } else if (temp2.getCarros().get(i).getTamano().toLowerCase().equals("grande")) {
                         max = (int) (temp2.getCarros().get(i).getSucio() * 2.2);
                     }
                     jProgressBar2.setMaximum(max);
@@ -848,7 +851,7 @@ public class Frame extends javax.swing.JFrame {
                         max = (int) (temp3.getCarros().get(i).getSucio() * 1.5);
                     } else if (temp3.getCarros().get(i).getTamano().toLowerCase().equals("mediano")) {
                         max = (int) (temp3.getCarros().get(i).getSucio() * 1.8);
-                    } else if (temp3.getCarros().get(i).getTamano().toLowerCase().equals("grande")){
+                    } else if (temp3.getCarros().get(i).getTamano().toLowerCase().equals("grande")) {
                         max = (int) (temp3.getCarros().get(i).getSucio() * 2.2);
                     }
                     jProgressBar3.setMaximum(max);
@@ -892,11 +895,11 @@ public class Frame extends javax.swing.JFrame {
 
     private void JB_AddCarroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AddCarroClienteActionPerformed
         DefaultListModel ListModel = (DefaultListModel) JList_CarrosCliente.getModel();
-        DefaultComboBoxModel CBModel = (DefaultComboBoxModel) JCB_AllCarroEmpleados.getModel();
-        ListModel.addElement((Carro) JCB_AllCarroEmpleados.getSelectedItem());
-        CBModel.removeElement((Carro) JCB_AllCarroEmpleados.getSelectedItem());
+        DefaultComboBoxModel CBModel = (DefaultComboBoxModel) JCB_AllCarroClientes.getModel();
+        ListModel.addElement((Carro) JCB_AllCarroClientes.getSelectedItem());
+        CBModel.removeElement((Carro) JCB_AllCarroClientes.getSelectedItem());
         JList_CarrosCliente.setModel(ListModel);
-        JCB_AllCarroEmpleados.setModel(CBModel);
+        JCB_AllCarroClientes.setModel(CBModel);
         JList_CarrosCliente.setModel(ListModel);
     }//GEN-LAST:event_JB_AddCarroClienteActionPerformed
 
