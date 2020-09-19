@@ -13,10 +13,9 @@ public class Empleado extends Persona implements Serializable {
 
     private static final long SerialVersionUID = 666L;
 
-    private ArrayList<Empleado> AllEmpleados;
     private File EmployFile;
     private int Carros;
-    private ArrayList<Carro> ArrCarros;
+    private ArrayList<Persona> AllEmpleados;
 
     public Empleado() {
     }
@@ -29,38 +28,40 @@ public class Empleado extends Persona implements Serializable {
         EmployFile = new File(path);
     }
 
-    public Empleado(String Nombre, String Apellido, int Edad, ArrayList<Carro> ArrCarros) {
+    public Empleado(String Nombre, String Apellido, int Edad, int Carros) {
         super(Nombre, Apellido, Edad);
-        this.ArrCarros = ArrCarros;
+        this.Carros = Carros;
     }
     
-     public ArrayList<Empleado> getAllEmpleados() {
+     public ArrayList<Persona> getAllClient() {
         return AllEmpleados;
     }
-     public ArrayList<Carro> getCarros() {
-        return ArrCarros;
+
+    public void setAllcars(ArrayList<Persona> AllEmpleados) {
+        this.AllEmpleados = AllEmpleados;
+    }
+    
+    public int getCarros() {
+        return Carros;
     }
 
-    public void setCarros(ArrayList<Carro> allCarros) {
-        this.ArrCarros = allCarros;
-    }
-    public void setAllEmpleados(ArrayList<Empleado> allEmpleados) {
-        this.AllEmpleados = allEmpleados;
+    public void setCarros(int Carros) {
+        this.Carros = Carros;
     }
 
-    public void setEmpleados(Empleado p) {
+    public void setEmpleados(Persona p) {
         this.AllEmpleados.add(p);
     }
     
     public void cargarArchivo() {
         try {
             AllEmpleados = new ArrayList();
-            Empleado temp;
+            Persona temp;
             if (EmployFile.exists()) {
                 FileInputStream entrada = new FileInputStream(EmployFile);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Empleado) objeto.readObject()) != null) {
+                    while ((temp = (Persona) objeto.readObject()) != null) {
                         AllEmpleados.add(temp);
                     }
                 } catch (EOFException e) {
