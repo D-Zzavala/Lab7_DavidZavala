@@ -13,9 +13,9 @@ public class Cliente extends Persona implements Serializable {
 
     private static final long SerialVersionUID = 666L;
 
-    private int Carros;
     private File ClientFile;
     private ArrayList<Persona> AllClientes;
+    private ArrayList<Carro> ArrCarros;
 
     public Cliente() {
     }
@@ -28,9 +28,9 @@ public class Cliente extends Persona implements Serializable {
         ClientFile = new File(path);
     }
 
-    public Cliente(String Nombre, String Apellido, int Edad, int Carros) {
+    public Cliente(String Nombre, String Apellido, int Edad, ArrayList<Carro> ArrCarros) {
         super(Nombre, Apellido, Edad);
-        this.Carros = Carros;
+        this.ArrCarros = ArrCarros;
     }
 
     public ArrayList<Persona> getAllClient() {
@@ -41,21 +41,8 @@ public class Cliente extends Persona implements Serializable {
         this.AllClientes = AllClientes;
     }
 
-    public int getCarros() {
-        return Carros;
-    }
-
-    public void setCarros(int Carros) {
-        this.Carros = Carros;
-    }
-
     public void setClientes(Persona p) {
         this.AllClientes.add(p);
-    }
-
-    @Override
-    public String toString() {
-        return "Carros: " + Carros;
     }
 
     public void cargarArchivo() {

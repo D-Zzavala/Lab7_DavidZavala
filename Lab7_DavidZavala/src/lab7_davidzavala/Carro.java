@@ -39,7 +39,7 @@ public class Carro implements Serializable {
 
     public Carro(File CarFile) {
         this.CarFile = CarFile;
-        }   
+    }
 
     public Carro(String path) {
         CarFile = new File(path);
@@ -92,7 +92,7 @@ public class Carro implements Serializable {
     public void setTamano(String Tamano) {
         this.Tamano = Tamano;
     }
-    
+
     public void setCArro(Carro car) {
         this.Allcars.add(car);
     }
@@ -101,13 +101,8 @@ public class Carro implements Serializable {
     public String toString() {
         return Placa + ", Puertas: " + Puertas + ", Sucio: " + Sucio + ", Tamaño: " + Tamano;
     }
-    public String toString2() {
-        return "Carro{" + "Allcars=" + Allcars + ", CarFile=" + CarFile + ", Puertas=" + Puertas + ", Sucio=" + Sucio + ", Placa=" + Placa + ", Tamano=" + Tamano + '}';
-    }
-    
-    
-    
-        public void cargarArchivo() {
+
+    public void cargarArchivo() {
         try {
             Allcars = new ArrayList();
             Carro temp;
